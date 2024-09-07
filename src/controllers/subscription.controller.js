@@ -8,8 +8,14 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 const toggleSubscription = asyncHandler(async (req, res) => {
   const { channelId } = req.params;
 
+  const channel = await User.findById(channelId);
+  if (!channel) {
+    throw new ApiError(400, `Channel with ID=${channelId} not found`);
+  }
+
   const subscription = await Subscription.findOneAndDelete({
-    $and: [{ channel: channelId, subscriber: req.user._id }],
+    channel: channelId,
+    subscriber: req.user._id,
   });
 
   if (subscription) {
