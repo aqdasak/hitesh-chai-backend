@@ -290,8 +290,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Avatar file is missing");
   }
 
-  //TODO: [x] delete old image - assignment
-  // No need since it is already handled in uploadOnCloudinary function
+  //TODO:[NOT REQUIRED] delete old image - assignment. No need since it is already handled in uploadOnCloudinary function
 
   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
@@ -321,8 +320,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Cover image file is missing");
   }
 
-  //TODO: [x] delete old image - assignment
-  // No need since it is already handled in uploadOnCloudinary function
+  //TODO:[NOT REQUIRED] delete old image - assignment. No need since it is already handled in uploadOnCloudinary function
 
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
